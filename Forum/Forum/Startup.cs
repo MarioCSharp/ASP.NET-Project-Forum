@@ -3,6 +3,7 @@ namespace Forum
     using Forum.Data;
     using Forum.Data.Models;
     using Forum.Infrastructure;
+    using Forum.Services.User;
     using Microsoft.AspNetCore.Builder;
     using Microsoft.AspNetCore.Hosting;
     using Microsoft.AspNetCore.Identity;
@@ -32,6 +33,8 @@ namespace Forum
                 .AddRoles<IdentityRole>()
                 .AddEntityFrameworkStores<ApplicationDbContext>();
             services.AddControllersWithViews();
+
+            services.AddTransient<IUserService, UserService>();
         }
         public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
         {
