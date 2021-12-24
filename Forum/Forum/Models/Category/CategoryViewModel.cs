@@ -1,6 +1,7 @@
 ﻿namespace Forum.Models.Category
 {
     using Forum.Data.Models;
+    using System;
     using System.Collections.Generic;
     public class CategoryViewModel
     {

@@ -4,7 +4,7 @@
     using Forum.Models.Category;
     using Forum.Services.Category;
     using Microsoft.AspNetCore.Mvc;
-    using System.Linq;
+    using System;
     public class CategoriesController : Controller
     {
         private readonly ApplicationDbContext data;

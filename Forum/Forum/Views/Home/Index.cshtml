@@ -1,8 +1,17 @@
 ﻿@using Forum.Models.Home
 @model AllCategoriesQueryModel
+
 <div class = "text-center">
-    <a asp-controller="Post" asp-action="Create" class="btn btn-primary">ㅤㅤCreate postㅤㅤ</a>
+    <h3>
+        The best place to keep up with <br /> the news around the world! 
+    </h3>
 </div>
+<br />
+<div class = "text-center">
+    <a asp-controller="Post" asp-action="Create" class="btn btn-primary btn-lg">Create post</a>
+</div>
+<br />
+<h3>Categories: </h3>
 <br />
 <div class="row">
     @foreach (var category in Model.Categories)

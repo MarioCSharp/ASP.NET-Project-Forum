@@ -5,5 +5,7 @@
 
 @foreach(var post in Model.Posts)
 {
-    <a asp-controller = "Post" asp-action = "Details" asp-route-Id = "@post.Id">@post.Tittle</a>
+    <div class="media-body">
+        <h4 class="media-heading"><a asp-controller="Post" asp-action="Details" asp-route-id="@post.Id">@post.Tittle</a></h4>
+    </div>
 }
