@@ -4,6 +4,7 @@
     using Forum.Models.Post;
     using Forum.Services.Post;
     using Forum.Services.User;
+    using Microsoft.AspNetCore.Authorization;
     using Microsoft.AspNetCore.Mvc;
     public class PostController : Controller
     {
@@ -18,6 +19,7 @@
             this.userService = userService;
             this.postService = postService;
         }
+        [Authorize]
         public IActionResult Create()
         {
             var categories = postService.GetCategories();
@@ -27,10 +29,21 @@
             });
         }
         [HttpPost]
+        [Authorize]
         public IActionResult Create(CreatePostFormModel mdl)
         {
             postService.Create(mdl);
             return RedirectToAction("Index", "Home");
+        }
+        public IActionResult Details(int Id)
+        {
+            var post = postService.GetPost(Id);
+            return View(new PostDetailsViewModel
+            {
+                Title = post.Tittle,
+                Content = post.Content,
+                Comments = post.Comments
+            });
         }
     }
 }

@@ -6,7 +6,6 @@
     using Forum.Services.User;
     using System.Collections.Generic;
     using System.Linq;
-
     public class PostService : IPostService
     {
         private readonly ApplicationDbContext data;
@@ -37,5 +36,7 @@
                 .ToList();
             return categories;
         }
+        public Post GetPost(int Id)
+        => data.Posts.Find(Id);
     }
 }

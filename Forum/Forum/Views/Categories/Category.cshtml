@@ -5,5 +5,5 @@
 
 @foreach(var post in Model.Posts)
 {
-    <h5>@post.Tittle</h5>
+    <a asp-controller = "Post" asp-action = "Details" asp-route-Id = "@post.Id">@post.Tittle</a>
 }

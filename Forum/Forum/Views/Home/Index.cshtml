@@ -1,13 +1,16 @@
 ﻿@using Forum.Models.Home
 @model AllCategoriesQueryModel
-
+<div class = "text-center">
+    <a asp-controller="Post" asp-action="Create" class="btn btn-primary">ㅤㅤCreate postㅤㅤ</a>
+</div>
+<br />
 <div class="row">
     @foreach (var category in Model.Categories)
     {
         <div class="col-md-4 media">
             <img src="@category.ImageURL" width="100" class="mr-3" alt="@category.Name">
             <div class="media-body">
-                <a asp-controller = "Categories" asp-action = "Category" asp-route-id = "@category.Id">@category.Name</a>
+                <a asp-controller="Categories" asp-action="Category" asp-route-id="@category.Id">@category.Name</a>
             </div>
         </div>
     }

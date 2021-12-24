@@ -7,5 +7,6 @@
     {
         void Create(CreatePostFormModel mdl);
         List<Category> GetCategories();
+        Post GetPost(int id);
     }
 }
