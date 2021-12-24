@@ -2,5 +2,14 @@
 @model PostDetailsViewModel
 
 <h3>@Model.Title</h3>
-<p>@Model.Content</p>
+<p>@Html.Raw(Model.Content)</p>
 <p>@Model.MyUser.Email</p>
+
+<a asp-controller = "Post" asp-action = "Comment" asp-route-id = "@Model.Id" class = "btn btn-primary">Comment</a>
+<hr />
+<h3>Comments:</h3>
+<br />
+@foreach (var comment in Model.Comments)
+{
+    <p>@comment.Content</p>
+}

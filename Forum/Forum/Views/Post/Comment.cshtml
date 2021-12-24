@@ -1,0 +1,17 @@
+﻿@using Forum.Models.Comment
+@model CommentFormModel
+
+<form method="post">
+    <div class="form-group">
+        <label asp-for="Content"></label>
+        <input asp-for="Content" class="form-control">
+        <span asp-validation-for="Content" class="text-danger"></span>
+    </div>
+    <div class = "d-none">
+        <input asp-for="PostId" type = "hidden">
+    </div>
+    <div class = "d-none">
+        <input asp-for="UserId" type = "hidden">
+    </div>
+    <input type = "submit" class = "btn btn-primary" value = "Comment"/>
+</form>

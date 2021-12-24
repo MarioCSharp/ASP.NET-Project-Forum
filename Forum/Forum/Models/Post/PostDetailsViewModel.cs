@@ -4,6 +4,7 @@
     using System.Collections.Generic;
     public class PostDetailsViewModel
     {
+        public int Id { get; set; }
         public string Title { get; init; }
         public string Content { get; init; }
         public MyUser MyUser { get; set; }
