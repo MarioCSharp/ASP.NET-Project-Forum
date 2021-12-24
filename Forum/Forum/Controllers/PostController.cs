@@ -6,6 +6,8 @@
     using Forum.Services.User;
     using Microsoft.AspNetCore.Authorization;
     using Microsoft.AspNetCore.Mvc;
+    using System.Linq;
+
     public class PostController : Controller
     {
         private readonly ApplicationDbContext data;
@@ -42,6 +44,7 @@
             {
                 Title = post.Tittle,
                 Content = post.Content,
+                MyUser = data.Users.FirstOrDefault(x => x.Id == post.UserId),
                 Comments = post.Comments
             });
         }

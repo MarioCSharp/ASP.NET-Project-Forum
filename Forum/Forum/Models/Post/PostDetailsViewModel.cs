@@ -6,6 +6,7 @@
     {
         public string Title { get; init; }
         public string Content { get; init; }
+        public MyUser MyUser { get; set; }
         public IEnumerable<Comment> Comments { get; init; }
     }
 }
