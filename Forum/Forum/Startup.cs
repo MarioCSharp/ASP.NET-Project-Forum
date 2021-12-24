@@ -3,6 +3,8 @@ namespace Forum
     using Forum.Data;
     using Forum.Data.Models;
     using Forum.Infrastructure;
+    using Forum.Services.Category;
+    using Forum.Services.Post;
     using Forum.Services.User;
     using Microsoft.AspNetCore.Builder;
     using Microsoft.AspNetCore.Hosting;
@@ -35,10 +37,12 @@ namespace Forum
             services.AddControllersWithViews();
 
             services.AddTransient<IUserService, UserService>();
+            services.AddTransient<IPostService, PostService>();
+            services.AddTransient<ICategoryService, CategoryService>();
         }
         public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
         {
-            app.PrepareDatabase();
+            app.PrepareApp();
             if (env.IsDevelopment())
             {
                 app.UseDeveloperExceptionPage();

@@ -2,21 +2,23 @@
 {
     using Forum.Data;
     using Forum.Models.Category;
+    using Forum.Services.Category;
     using Microsoft.AspNetCore.Mvc;
     using System.Linq;
     public class CategoriesController : Controller
     {
         private readonly ApplicationDbContext data;
-        public CategoriesController(ApplicationDbContext data)
+        private readonly ICategoryService categoryService;
+        public CategoriesController(ApplicationDbContext data,
+                                    ICategoryService categoryService)
         {
             this.data = data;
+            this.categoryService = categoryService;
         }
         public IActionResult Category(int Id)
         {
-            var category = data.Categories.Find(Id);
-            var postsCategory = data.Posts
-                .Where(x => x.CategoryId == category.Id)
-                .ToList();
+            var category = categoryService.GetCategory(Id);
+            var postsCategory = categoryService.GetCategoryPosts(category);
             return View(new CategoryViewModel
             {
                 Name = category.Name,

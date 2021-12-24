@@ -8,13 +8,11 @@
     using System;
     using System.Threading.Tasks;
     using Data.Models;
-
     using static GlobalConstants.Administator;
     using System.Linq;
-
     public static class ApplicationStartUp
     {
-        public static IApplicationBuilder PrepareDatabase(this IApplicationBuilder app)
+        public static IApplicationBuilder PrepareApp(this IApplicationBuilder app)
         {
             using var serviceScope = app.ApplicationServices.CreateScope();
             var services = serviceScope.ServiceProvider;
