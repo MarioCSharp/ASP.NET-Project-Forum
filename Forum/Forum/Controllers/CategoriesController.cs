@@ -2,9 +2,12 @@
 {
     using Forum.Data;
     using Forum.Models.Category;
+    using Forum.Models.Home;
     using Forum.Services.Category;
     using Microsoft.AspNetCore.Authorization;
     using Microsoft.AspNetCore.Mvc;
+    using System.Linq;
+
     public class CategoriesController : Controller
     {
         private readonly ApplicationDbContext data;
@@ -45,5 +48,6 @@
             categoryService.Create(categoryInput);
             return View();
         }
+        
     }
 }

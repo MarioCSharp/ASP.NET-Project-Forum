@@ -25,6 +25,8 @@
             {
                 Tittle = mdl.Tittle,
                 Content = mdl.Content,
+                PostedOn = DateTime.Now,
+                CreaterEmail = data.Users.FirstOrDefault(x => x.Id == userService.GetUserId()).Email,
                 UserId = userService.GetUserId(),
                 CategoryId = mdl.CategoryId
             };

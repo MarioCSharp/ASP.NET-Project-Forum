@@ -7,5 +7,13 @@
 {
     <div class="media-body">
         <h4 class="media-heading"><a asp-controller="Post" asp-action="Details" asp-route-id="@post.Id">@post.Tittle</a></h4>
+        <ul class="list-inline list-unstyled text-right">
+            <li class="list-inline-item">
+                <i class="fas fa-user-edit"></i> @post.CreaterEmail
+            </li>
+            <li class="list-inline-item">
+                <i class="fas fa-calendar-alt"></i> @post.PostedOn
+            </li>
+        </ul>
     </div>
 }

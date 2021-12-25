@@ -22,6 +22,10 @@
                             <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="Index">Home</a>
                         </li>
                     </ul>
+                    @if (User.IsInRole(GlobalConstants.Administator.AdministratorRoleName))
+                    {
+                        <a asp-controller="Administrator" asp-action="Manage" class = "nav-link text-dark" >Manage</a>
+                    }
                     <partial name="_LoginPartial" />
                 </div>
             </div>
@@ -35,7 +39,7 @@
 
     <footer class="border-top footer text-muted">
         <div class="container">
-            &copy; @DateTime.UtcNow.Year - Forum 
+            &copy; @DateTime.UtcNow.Year - Forum
         </div>
     </footer>
     <script src="~/lib/jquery/dist/jquery.min.js"></script>

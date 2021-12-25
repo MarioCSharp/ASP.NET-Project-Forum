@@ -1,0 +1,14 @@
+﻿@using Forum.Models.Home
+@model AllCategoriesQueryModel
+<div class="row">
+    @foreach (var category in Model.Categories)
+    {
+        <div class="card" style="width: 18rem;">
+            <img class="card-img-top" src="@category.ImageURL" alt="@category.Name">
+            <div class="card-body">
+                <h5 class="card-title">@category.Name</h5>
+                <a asp-action="DeleteCategory" class="btn btn-danger" asp-route = "@category.Id">Delete</a>
+            </div>
+        </div>
+    }
+</div>

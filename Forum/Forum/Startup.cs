@@ -3,6 +3,7 @@ namespace Forum
     using Forum.Data;
     using Forum.Data.Models;
     using Forum.Infrastructure;
+    using Forum.Services.Administrator;
     using Forum.Services.Category;
     using Forum.Services.Post;
     using Forum.Services.User;
@@ -39,6 +40,7 @@ namespace Forum
             services.AddTransient<IUserService, UserService>();
             services.AddTransient<IPostService, PostService>();
             services.AddTransient<ICategoryService, CategoryService>();
+            services.AddTransient<IAdministratorService, AdministratorService>();
         }
         public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
         {

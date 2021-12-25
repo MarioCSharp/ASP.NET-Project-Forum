@@ -1,5 +1,6 @@
 ﻿namespace Forum.Data.Models
 {
+    using System;
     using System.Collections.Generic;
     using System.ComponentModel.DataAnnotations;
     using System.ComponentModel.DataAnnotations.Schema;
@@ -15,6 +16,10 @@
         public string Tittle { get; set; }
         [Required]
         public string Content { get; set; }
+        [Required]
+        public DateTime PostedOn { get; set; }
+        [Required]
+        public string CreaterEmail { get; set; }
         [Required]
         [ForeignKey("MyUser")]
         public string UserId { get; set; }
