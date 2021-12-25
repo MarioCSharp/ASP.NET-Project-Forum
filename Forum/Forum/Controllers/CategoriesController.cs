@@ -3,8 +3,8 @@
     using Forum.Data;
     using Forum.Models.Category;
     using Forum.Services.Category;
+    using Microsoft.AspNetCore.Authorization;
     using Microsoft.AspNetCore.Mvc;
-    using System;
     public class CategoriesController : Controller
     {
         private readonly ApplicationDbContext data;
@@ -24,6 +24,26 @@
                 Name = category.Name,
                 Posts = postsCategory
             });
+        }
+        [Authorize]
+        public IActionResult Create()
+        {
+            if (!User.IsInRole(GlobalConstants.Administator.AdministratorRoleName))
+            {
+                return RedirectToAction("Error", "Home");
+            }
+            return View();
+        }
+        [Authorize]
+        [HttpPost]
+        public IActionResult Create(CategoryFormModel categoryInput)
+        {
+            if (!User.IsInRole(GlobalConstants.Administator.AdministratorRoleName))
+            {
+                return RedirectToAction("Error", "Home");
+            }
+            categoryService.Create(categoryInput);
+            return View();
         }
     }
 }

@@ -3,7 +3,7 @@
 
 <h3>@Model.Title</h3>
 <p>@Html.Raw(Model.Content)</p>
-<p>@Model.MyUser.Email</p>
+<p>Creator: @Model.MyUser.Email</p>
 
 <a asp-controller="Post" asp-action="Comment" asp-route-id="@Model.Id" class="btn btn-primary">Comment</a>
 <hr />
@@ -21,7 +21,7 @@
                             <div class="media-body ml-3">
                                 @comment.CreaterEmail
                                 <div class="text-muted small">
-                                    <time datetime="@comment.PostedOn.ToString("O")"></time>
+                                    <p>@comment.PostedOn</p>
                                 </div>
                             </div>
                         </div>

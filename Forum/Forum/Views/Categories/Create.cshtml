@@ -1,0 +1,18 @@
+﻿@using Forum.Models.Category
+@model CategoryFormModel
+
+<form method="post">
+    <div class="form-group">
+        <label asp-for="Name"></label>
+        <input asp-for="Name" class="form-control">
+        <span asp-validation-for="Name" class="text-danger"></span>
+    </div>
+    <div class="form-group">
+        <label asp-for="ImageUrl"></label>
+        <input asp-for="ImageUrl" class="form-control">
+        <span asp-validation-for="ImageUrl" class="text-danger"></span>
+    </div>
+    <input class = "btn btn-primary" value = "Create" type = "submit"/>
+</form>
+
+

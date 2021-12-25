@@ -47,6 +47,10 @@
             {
                 return;
             }
+            if (commentInput.Content == null)
+            {
+                return;
+            }
             Post post = data.Posts.Find(commentInput.PostId);
             if (post == null)
             {

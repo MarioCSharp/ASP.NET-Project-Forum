@@ -1,14 +1,18 @@
 ﻿@using Forum.Models.Home
 @model AllCategoriesQueryModel
 
-<div class = "text-center">
+<div class="text-center">
     <h3>
-        The best place to keep up with <br /> the news around the world! 
+        The best place to keep up with <br /> the news around the world!
     </h3>
 </div>
 <br />
-<div class = "text-center">
+<div class="text-center">
     <a asp-controller="Post" asp-action="Create" class="btn btn-primary btn-lg">Create post</a>
+    @if (User.IsInRole(GlobalConstants.Administator.AdministratorRoleName))
+    {
+        <a asp-controller="Categories" asp-action="Create" class="btn btn-primary btn-lg">Create category</a>
+    }
 </div>
 <br />
 <h3>Categories: </h3>

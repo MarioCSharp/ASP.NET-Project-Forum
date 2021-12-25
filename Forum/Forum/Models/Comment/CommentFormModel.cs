@@ -6,7 +6,8 @@
     {
         public int PostId { get; set; }
         public string UserId { get; set; }
-        [Required]
+        [Required(ErrorMessage = "The content field is required!")]
+        [MaxLength(200)]
         public string Content { get; set; }
         [Required]
         public DateTime PostedOn { get; set; }
