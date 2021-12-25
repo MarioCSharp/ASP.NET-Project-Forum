@@ -46,7 +46,7 @@
                 return RedirectToAction("Error", "Home");
             }
             categoryService.Create(categoryInput);
-            return View();
+            return RedirectToAction("EditCategories", "Administrator");
         }
         
     }
