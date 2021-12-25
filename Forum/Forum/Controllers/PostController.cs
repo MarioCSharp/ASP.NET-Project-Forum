@@ -43,13 +43,14 @@
         public IActionResult Details(int Id)
         {
             var post = postService.GetPost(Id);
+            var commentQuery = data.Comments.AsQueryable();
             return View(new PostDetailsViewModel
             {
                 Id = post.Id,
                 Title = post.Tittle,
                 Content = post.Content,
                 MyUser = data.Users.FirstOrDefault(x => x.Id == post.UserId),
-                Comments = data.Comments.Where(x => x.PostId == post.Id)
+                Comments = commentQuery.Where(x => x.PostId == post.Id).OrderByDescending(x => x.Id).ToList()
             });
         }
         [Authorize]
@@ -65,15 +66,7 @@
         [HttpPost]
         public IActionResult Comment(CommentFormModel commentInput)
         {
-            Comment comment = new Comment
-            {
-                PostId = commentInput.PostId,
-                UserId = userService.GetUserId(),
-                Content = commentInput.Content,
-                PostedOn = DateTime.Now
-            };
-            data.Comments.Add(comment);
-            data.SaveChanges();
+            postService.Comment(commentInput);
             return RedirectToAction("Index", "Home");
         }
     }

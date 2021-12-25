@@ -13,6 +13,7 @@
         [ForeignKey("MyUser")]
         public string UserId { get; set; }
         public MyUser User { get; set; }
+        public string CreaterEmail { get; set; }
         [Required]
         public string Content { get; set; }
         [Required]

@@ -6,6 +6,9 @@
     using Forum.Services.User;
     using System.Collections.Generic;
     using System.Linq;
+    using Forum.Models.Comment;
+    using System;
+
     public class PostService : IPostService
     {
         private readonly ApplicationDbContext data;
@@ -38,5 +41,27 @@
         }
         public Post GetPost(int Id)
         => data.Posts.Find(Id);
+        public void Comment(CommentFormModel commentInput)
+        {
+            if (commentInput.PostId <= 0)
+            {
+                return;
+            }
+            Post post = data.Posts.Find(commentInput.PostId);
+            if (post == null)
+            {
+                return;
+            }
+            Comment comment = new Comment
+            {
+                PostId = commentInput.PostId,
+                UserId = userService.GetUserId(),
+                CreaterEmail = data.Users.FirstOrDefault(x => x.Id == userService.GetUserId()).Email,
+                Content = commentInput.Content,
+                PostedOn = DateTime.Now
+            };
+            data.Comments.Add(comment);
+            data.SaveChanges();
+        }
     }
 }
