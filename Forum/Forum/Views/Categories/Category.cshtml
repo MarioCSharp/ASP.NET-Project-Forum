@@ -1,19 +1,26 @@
 ﻿@using Forum.Models.Category
 @model CategoryViewModel
 
-<h3>@Model.Name</h3>
-
+<h3> @Model.Name</h3>
+<br />
 @foreach(var post in Model.Posts)
 {
-    <div class="media-body">
-        <h4 class="media-heading"><a asp-controller="Post" asp-action="Details" asp-route-id="@post.Id">@post.Tittle</a></h4>
-        <ul class="list-inline list-unstyled text-right">
-            <li class="list-inline-item">
-                <i class="fas fa-user-edit"></i> @post.CreaterEmail
-            </li>
-            <li class="list-inline-item">
-                <i class="fas fa-calendar-alt"></i> @post.PostedOn
-            </li>
-        </ul>
+    <div class="container-fluid mt-100">
+        <div class="row">
+            <div class="col-md-12">
+                <div class="card mb-4">
+                    <div class="card-header">
+                        <div class="media flex-wrap w-100 align-items-center">
+                            <div class="media-body ml-3">
+                                <h5 class="media-heading text-dark"><a asp-controller="Post" asp-action="Details" asp-route-id="@post.Id">@post.Tittle</a></h5>
+                                <div class="text-muted small">
+                                    <p>@post.PostedOn</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
     </div>
 }
