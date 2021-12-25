@@ -3,5 +3,6 @@
     public interface IAdministratorService
     {
         bool DeleteCategory(int Id);
+        bool DeleteComment(int Id);
     }
 }

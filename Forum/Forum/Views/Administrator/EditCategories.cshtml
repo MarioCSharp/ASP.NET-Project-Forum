@@ -7,7 +7,7 @@
             <img class="card-img-top" src="@category.ImageURL" alt="@category.Name">
             <div class="card-body">
                 <h5 class="card-title">@category.Name</h5>
-                <a asp-action="DeleteCategory" class="btn btn-danger" asp-route = "@category.Id">Delete</a>
+                <a asp-action="DeleteCategory" class="btn btn-danger" asp-route-id = "@category.Id">Delete</a>
             </div>
         </div>
     }

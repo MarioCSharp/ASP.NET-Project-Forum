@@ -33,10 +33,20 @@
             });
         }
         [Authorize]
-        public IActionResult Delete(int Id)
+        public IActionResult DeleteCategory(int Id)
         {
             administratorService.DeleteCategory(Id);
             return RedirectToAction(nameof(EditCategories));
+        }
+        [Authorize]
+        public IActionResult DeleteComment(int Id)
+        {
+            var removed = administratorService.DeleteComment(Id);
+            if (!removed)
+            {
+                return BadRequest();
+            }
+            return RedirectToAction("Index", "Home");
         }
     }
 }
