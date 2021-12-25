@@ -1,8 +1,7 @@
-﻿using Microsoft.AspNetCore.Http;
-using System.Security.Claims;
-
-namespace Forum.Services.User
+﻿namespace Forum.Services.User
 {
+    using Microsoft.AspNetCore.Http;
+    using System.Security.Claims;
     public class UserService : IUserService
     {
         private readonly IHttpContextAccessor httpContext;
