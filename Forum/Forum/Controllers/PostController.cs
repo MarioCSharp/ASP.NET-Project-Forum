@@ -7,10 +7,7 @@
     using Microsoft.AspNetCore.Authorization;
     using Microsoft.AspNetCore.Mvc;
     using System.Linq;
-    using Forum.Data.Models;
     using Forum.Models.Comment;
-    using System;
-
     public class PostController : Controller
     {
         private readonly ApplicationDbContext data;

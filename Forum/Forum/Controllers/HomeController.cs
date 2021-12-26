@@ -7,7 +7,6 @@
     using Microsoft.Extensions.Logging;
     using System.Diagnostics;
     using System.Linq;
-
     public class HomeController : Controller
     {
         private readonly ILogger<HomeController> _logger;

@@ -1,7 +1,6 @@
-﻿using Microsoft.EntityFrameworkCore.Migrations;
-
-namespace Forum.Data.Migrations
+﻿namespace Forum.Data.Migrations
 {
+    using Microsoft.EntityFrameworkCore.Migrations;
     public partial class User : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)

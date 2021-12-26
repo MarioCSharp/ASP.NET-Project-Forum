@@ -1,0 +1,27 @@
+﻿@using Forum.Models.Category
+@model CategoryViewModel
+
+<h3> @Model.Name</h3>
+<br />
+@foreach (var post in Model.Posts)
+{
+    <div class="container-fluid mt-100">
+        <div class="row">
+            <div class="col-md-12">
+                <div class="card mb-4">
+                    <div class="card-header">
+                        <div class="media flex-wrap w-100 align-items-center">
+                            <div class="media-body ml-3">
+                                <h5 class="media-heading text-dark"><a asp-controller="Post" asp-action="Details" asp-route-id="@post.Id">@post.Tittle</a></h5>
+                                <a asp-action="DeletePost" asp-route-id="@post.Id" class="btn btn-danger">Delete</a>
+                                <div class="text-muted small">
+                                    <p>@post.PostedOn</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+}

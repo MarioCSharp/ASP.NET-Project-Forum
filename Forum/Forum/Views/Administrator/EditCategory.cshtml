@@ -1,0 +1,16 @@
+﻿@using Forum.Models.Category
+@model EditCategoryFormModel
+
+<form method="post">
+    <div class="form-group">
+        <label asp-for="Name"></label>
+        <input asp-for="Name" class="form-control">
+        <span asp-validation-for="Name" class="text-danger"></span>
+    </div>
+    <div class="form-group">
+        <label asp-for="ImageURL"></label>
+        <input asp-for="ImageURL" class="form-control">
+        <span asp-validation-for="ImageURL" class="text-danger"></span>
+    </div>
+    <input class="btn btn-primary" value="Edit" type="submit" />
+</form>

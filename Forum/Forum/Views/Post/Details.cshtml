@@ -24,7 +24,7 @@
                                     <p>@comment.PostedOn</p>
                                 </div>
                                 <div class="media-body ml-1">
-                                    @if (User.Identity.Name == Model.MyUser.Email)
+                                    @if (User.Identity.Name == Model.MyUser.Email || User.IsInRole(GlobalConstants.Administator.AdministratorRoleName))
                                     {
                                         <a asp-controller="Administrator" asp-action="DeleteComment" asp-route-id="@comment.Id" class="btn btn-danger">Delete</a>
                                     }

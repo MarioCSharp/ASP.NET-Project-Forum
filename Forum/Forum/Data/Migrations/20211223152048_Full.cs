@@ -1,8 +1,7 @@
-﻿using System;
-using Microsoft.EntityFrameworkCore.Migrations;
-
-namespace Forum.Data.Migrations
+﻿namespace Forum.Data.Migrations
 {
+    using System;
+    using Microsoft.EntityFrameworkCore.Migrations;
     public partial class Full : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)

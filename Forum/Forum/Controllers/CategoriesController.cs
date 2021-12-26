@@ -1,21 +1,14 @@
 ﻿namespace Forum.Controllers
 {
-    using Forum.Data;
     using Forum.Models.Category;
-    using Forum.Models.Home;
     using Forum.Services.Category;
     using Microsoft.AspNetCore.Authorization;
     using Microsoft.AspNetCore.Mvc;
-    using System.Linq;
-
     public class CategoriesController : Controller
     {
-        private readonly ApplicationDbContext data;
         private readonly ICategoryService categoryService;
-        public CategoriesController(ApplicationDbContext data,
-                                    ICategoryService categoryService)
+        public CategoriesController(ICategoryService categoryService)
         {
-            this.data = data;
             this.categoryService = categoryService;
         }
         public IActionResult Category(int Id)

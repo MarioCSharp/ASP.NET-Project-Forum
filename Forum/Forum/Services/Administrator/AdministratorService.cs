@@ -1,6 +1,9 @@
 ﻿namespace Forum.Services.Administrator
 {
     using Forum.Data;
+    using Forum.Models.Category;
+    using System.Linq;
+
     public class AdministratorService : IAdministratorService
     {
         private readonly ApplicationDbContext data;
@@ -31,6 +34,29 @@
                 return false;
             }
             data.Comments.Remove(commentToDelete);
+            data.SaveChanges();
+            return true;
+        }
+        public bool DeletePost(int Id)
+        {
+            var post = data.Posts.FirstOrDefault(x => x.Id == Id);
+            if (post == null)
+            {
+                return false;
+            }
+            data.Posts.Remove(post);
+            data.SaveChanges();
+            return true;
+        }
+        public bool EditCategory(int Id, EditCategoryFormModel edit)
+        {
+            var category = data.Categories.Find(Id);
+            if (category == null)
+            {
+                return false;
+            }
+            category.Name = edit.Name;
+            category.ImageURL = edit.ImageURL;
             data.SaveChanges();
             return true;
         }
