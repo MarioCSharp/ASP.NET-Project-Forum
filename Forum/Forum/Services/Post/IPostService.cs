@@ -6,10 +6,10 @@
     using Forum.Models.Comment;
     public interface IPostService
     {
-        void Create(CreatePostFormModel mdl);
+        bool Create(CreatePostFormModel mdl, string userId);
         List<Category> GetCategories();
         Post GetPost(int id);
-        void Comment(CommentFormModel commentInput);
+        void Comment(CommentFormModel commentInput, string userId);
         bool Delete(int Id);
     }
 }

@@ -7,6 +7,6 @@
     {
         Category GetCategory(int Id);
         List<Post> GetCategoryPosts(Category category);
-        void Create(CategoryFormModel categoryInput);
+        bool Create(CategoryFormModel categoryInput);
     }
 }

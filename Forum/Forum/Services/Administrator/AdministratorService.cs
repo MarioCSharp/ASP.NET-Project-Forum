@@ -3,7 +3,6 @@
     using Forum.Data;
     using Forum.Models.Category;
     using System.Linq;
-
     public class AdministratorService : IAdministratorService
     {
         private readonly ApplicationDbContext data;

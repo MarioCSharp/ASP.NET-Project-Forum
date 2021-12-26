@@ -5,7 +5,6 @@
     using Data.Models;
     using Forum.Data;
     using Forum.Models.Category;
-
     public class CategoryService : ICategoryService
     {
         private readonly ApplicationDbContext data;
@@ -19,15 +18,15 @@
         => data.Posts
                 .Where(x => x.CategoryId == category.Id)
                 .ToList();
-        public void Create(CategoryFormModel categoryInput)
+        public bool Create(CategoryFormModel categoryInput)
         {
             if (categoryInput.ImageUrl == null)
             {
-                return;
+                return false;
             }
             if (categoryInput.Name == null)
             {
-                return;
+                return false;
             }
             Category category = new Category
             {
@@ -36,6 +35,7 @@
             };
             data.Categories.Add(category);
             data.SaveChanges();
+            return true;
         }
     }
 }

@@ -38,7 +38,11 @@
             {
                 return RedirectToAction("Error", "Home");
             }
-            categoryService.Create(categoryInput);
+            var created = categoryService.Create(categoryInput);
+            if (!created)
+            {
+                return BadRequest();
+            }
             return RedirectToAction("EditCategories", "Administrator");
         }
         

@@ -34,7 +34,11 @@
         [Authorize]
         public IActionResult Create(CreatePostFormModel mdl)
         {
-            postService.Create(mdl);
+            var created = postService.Create(mdl, userService.GetUserId());
+            if (!created)
+            {
+                return BadRequest();
+            }
             return RedirectToAction("Index", "Home");
         }
         public IActionResult Details(int Id)
@@ -63,7 +67,7 @@
         [HttpPost]
         public IActionResult Comment(CommentFormModel commentInput)
         {
-            postService.Comment(commentInput);
+            postService.Comment(commentInput, userService.GetUserId());
             return RedirectToAction("Index", "Home");
         }
         [Authorize]

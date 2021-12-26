@@ -3,35 +3,35 @@
     using Forum.Models.Post;
     using Forum.Data.Models;
     using Forum.Data;
-    using Forum.Services.User;
     using System.Collections.Generic;
     using System.Linq;
     using Forum.Models.Comment;
     using System;
-
     public class PostService : IPostService
     {
         private readonly ApplicationDbContext data;
-        private readonly IUserService userService;
-        public PostService(ApplicationDbContext data,
-                             IUserService userService)
+        public PostService(ApplicationDbContext data)
         {
             this.data = data;
-            this.userService = userService;
         }
-        public void Create(CreatePostFormModel mdl)
+        public bool Create(CreatePostFormModel mdl, string userId)
         {
+            if (mdl.Tittle == null || mdl.Content == null || mdl.CategoryId <= 0)
+            {
+                return false;
+            }
             Post post = new Post
             {
                 Tittle = mdl.Tittle,
                 Content = mdl.Content,
                 PostedOn = DateTime.Now,
-                CreaterEmail = data.Users.FirstOrDefault(x => x.Id == userService.GetUserId()).Email,
-                UserId = userService.GetUserId(),
+                CreaterEmail = data.Users.FirstOrDefault(x => x.Id == userId).Email,
+                UserId = userId,
                 CategoryId = mdl.CategoryId
             };
             data.Posts.Add(post);
             data.SaveChanges();
+            return true;
         }
         public List<Category> GetCategories()
         {
@@ -43,7 +43,7 @@
         }
         public Post GetPost(int Id)
         => data.Posts.Find(Id);
-        public void Comment(CommentFormModel commentInput)
+        public void Comment(CommentFormModel commentInput, string userId)
         {
             if (commentInput.PostId <= 0)
             {
@@ -61,8 +61,8 @@
             Comment comment = new Comment
             {
                 PostId = commentInput.PostId,
-                UserId = userService.GetUserId(),
-                CreaterEmail = data.Users.FirstOrDefault(x => x.Id == userService.GetUserId()).Email,
+                UserId = userId,
+                CreaterEmail = data.Users.FirstOrDefault(x => x.Id == userId).Email,
                 Content = commentInput.Content,
                 PostedOn = DateTime.Now
             };
