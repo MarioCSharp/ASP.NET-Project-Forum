@@ -22,7 +22,7 @@
             this.administratorService = administratorService;
             this.categoryService = categoryService;
         }
-        [Authorize]
+        [Authorize(Roles = GlobalConstants.Administator.AdministratorRoleName)]
         public IActionResult Manage()
         {
             var isAdmin = IsAdmin();
@@ -32,7 +32,7 @@
             }
             return View();
         }
-        [Authorize]
+        [Authorize(Roles = GlobalConstants.Administator.AdministratorRoleName)]
         public IActionResult EditCategories()
         {
             var isAdmin = IsAdmin();
@@ -49,7 +49,7 @@
                 Categories = categories
             });
         }
-        [Authorize]
+        [Authorize(Roles = GlobalConstants.Administator.AdministratorRoleName)]
         public IActionResult DeleteCategory(int Id)
         {
             var isAdmin = IsAdmin();
@@ -70,7 +70,7 @@
             }
             return RedirectToAction("Index", "Home");
         }
-        [Authorize]
+        [Authorize(Roles = GlobalConstants.Administator.AdministratorRoleName)]
         public IActionResult EditPosts()
         {
             var isAdmin = IsAdmin();
@@ -87,7 +87,7 @@
                 Categories = categories
             });
         }
-        [Authorize]
+        [Authorize(Roles = GlobalConstants.Administator.AdministratorRoleName)]
         public IActionResult Category(int Id)
         {
             var isAdmin = IsAdmin();
@@ -103,7 +103,7 @@
                 Posts = postsCategory
             });
         }
-        [Authorize]
+        [Authorize(Roles = GlobalConstants.Administator.AdministratorRoleName)]
         public IActionResult DeletePost(int Id)
         {
             var isAdmin = IsAdmin();
@@ -114,7 +114,7 @@
             administratorService.DeletePost(Id);
             return RedirectToAction(nameof(EditPosts));
         }
-        [Authorize]
+        [Authorize(Roles = GlobalConstants.Administator.AdministratorRoleName)]
         public IActionResult EditCategory(int Id)
         {
             var isAdmin = IsAdmin();
@@ -133,7 +133,7 @@
                 ImageURL = categoryToEdit.ImageURL
             });
         }
-        [Authorize]
+        [Authorize(Roles = GlobalConstants.Administator.AdministratorRoleName)]
         [HttpPost]
         public IActionResult EditCategory(int Id, EditCategoryFormModel toEdit)
         {
@@ -149,7 +149,7 @@
             }
             return RedirectToAction(nameof(EditCategories));
         }
-        [Authorize]
+        [Authorize(Roles = GlobalConstants.Administator.AdministratorRoleName)]
         public IActionResult Users()
         {
             var isAdmin = IsAdmin();
@@ -166,7 +166,7 @@
                 Users = users
             });
         }
-        [Authorize]
+        [Authorize(Roles = GlobalConstants.Administator.AdministratorRoleName)]
         public IActionResult DeleteUser(string Id)
         {
             var isAdmin = IsAdmin();
@@ -181,7 +181,6 @@
             }
             return RedirectToAction(nameof(Users));
         }
-
         public bool IsAdmin()
         {
             if (User.IsInRole(GlobalConstants.Administator.AdministratorRoleName))
