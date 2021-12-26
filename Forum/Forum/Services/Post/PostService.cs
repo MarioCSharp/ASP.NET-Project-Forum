@@ -69,5 +69,16 @@
             data.Comments.Add(comment);
             data.SaveChanges();
         }
+        public bool Delete(int Id)
+        {
+            var post = data.Posts.Find(Id);
+            if (post == null)
+            {
+                return false;
+            }
+            data.Posts.Remove(post);
+            data.SaveChanges();
+            return true;
+        }
     }
 }

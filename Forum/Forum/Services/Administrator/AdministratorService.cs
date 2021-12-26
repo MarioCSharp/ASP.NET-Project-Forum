@@ -60,5 +60,16 @@
             data.SaveChanges();
             return true;
         }
+        public bool DeleteUser(string Id)
+        {
+            var user = data.Users.Find(Id);
+            if (user == null)
+            {
+                return false;
+            }
+            data.Users.Remove(user);
+            data.SaveChanges();
+            return true;
+        }
     }
 }

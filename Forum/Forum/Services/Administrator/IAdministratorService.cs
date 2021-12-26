@@ -7,5 +7,6 @@
         bool DeleteComment(int Id);
         bool DeletePost(int Id);
         bool EditCategory(int Id, EditCategoryFormModel edit);
+        bool DeleteUser(string Id);
     }
 }

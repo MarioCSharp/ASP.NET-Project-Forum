@@ -16,6 +16,10 @@
                                 <div class="text-muted small">
                                     <p>@post.PostedOn</p>
                                 </div>
+                                @if(post.CreaterEmail == User.Identity.Name)
+                                {
+                                    <a asp-controller = "Post" asp-action = "Delete" asp-route-id = "@post.Id" class = "btn btn-danger">Delete</a>
+                                }
                             </div>
                         </div>
                     </div>

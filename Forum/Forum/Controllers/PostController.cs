@@ -66,5 +66,15 @@
             postService.Comment(commentInput);
             return RedirectToAction("Index", "Home");
         }
+        [Authorize]
+        public IActionResult Delete(int Id)
+        {
+            var deleted = postService.Delete(Id);
+            if (!deleted)
+            {
+                return BadRequest();
+            }
+            return RedirectToAction("Index", "Home");
+        }
     }
 }

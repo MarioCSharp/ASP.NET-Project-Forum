@@ -10,5 +10,6 @@
         List<Category> GetCategories();
         Post GetPost(int id);
         void Comment(CommentFormModel commentInput);
+        bool Delete(int Id);
     }
 }
