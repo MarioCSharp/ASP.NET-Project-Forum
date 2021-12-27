@@ -63,7 +63,7 @@
             data.SaveChanges();
             var categoryService = new CategoryService(data);
             //Act
-            var result = string.Join(" ", categoryService.GetCategoryPosts(category).Select(x => x.Tittle));
+            var result = string.Join(" ", categoryService.GetCategoryPosts(category).Select(x => x.Title));
             //Assert
             Assert.Equal("a b", result);
         }

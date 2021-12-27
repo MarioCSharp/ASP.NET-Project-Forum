@@ -31,7 +31,10 @@
                 .ToList();
             return View(new AllCategoriesQueryModel
             {
-                Categories = list
+                Categories = list,
+                CategoriesCount = list.Count(),
+                PostsCount = data.Posts.Count(),
+                UsersCount = data.Users.Count()
             });
         }
         [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]

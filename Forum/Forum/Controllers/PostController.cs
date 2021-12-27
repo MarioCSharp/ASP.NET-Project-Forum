@@ -8,6 +8,7 @@
     using Microsoft.AspNetCore.Mvc;
     using System.Linq;
     using Forum.Models.Comment;
+    using Forum.Models.Statistics;
     public class PostController : Controller
     {
         private readonly ApplicationDbContext data;
@@ -89,6 +90,17 @@
                 return BadRequest();
             }
             return RedirectToAction("Index", "Home");
+        }
+        [Authorize]
+        public IActionResult Posts()
+        {
+            var postsQuery = data.Posts.ToList();
+            string userId = userService.GetUserId();
+            var myPosts = postService.GetPostsView(postsQuery, userId);
+            return View(new AllMyPostsQueryModel
+            {
+                Posts = myPosts
+            });
         }
     }
 }

@@ -22,7 +22,7 @@
                             <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="Index">Home</a>
                         </li>
                     </ul>
-                    <a asp-controller = "Statistics" asp-action = "Posts" class = "nav-link text-dark">My posts</a>
+                    <a asp-controller = "Post" asp-action = "Posts" class = "nav-link text-dark">My posts</a>
                     @if (User.IsInRole(GlobalConstants.Administator.AdministratorRoleName))
                     {
                         <a asp-controller="Administrator" asp-action="Manage" class = "nav-link text-dark" >Manage</a>

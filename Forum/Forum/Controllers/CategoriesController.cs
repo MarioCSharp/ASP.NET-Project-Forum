@@ -21,23 +21,15 @@
                 Posts = postsCategory
             });
         }
-        [Authorize]
+        [Authorize(Roles = GlobalConstants.Administator.AdministratorRoleName)]
         public IActionResult Create()
         {
-            if (!User.IsInRole(GlobalConstants.Administator.AdministratorRoleName))
-            {
-                return RedirectToAction("Error", "Home");
-            }
             return View();
         }
-        [Authorize]
+        [Authorize(Roles = GlobalConstants.Administator.AdministratorRoleName)]
         [HttpPost]
         public IActionResult Create(CategoryFormModel categoryInput)
         {
-            if (!User.IsInRole(GlobalConstants.Administator.AdministratorRoleName))
-            {
-                return RedirectToAction("Error", "Home");
-            }
             var created = categoryService.Create(categoryInput);
             if (!created)
             {

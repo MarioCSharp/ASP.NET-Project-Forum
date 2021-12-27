@@ -35,21 +35,16 @@
         [Authorize(Roles = GlobalConstants.Administator.AdministratorRoleName)]
         public IActionResult EditCategories()
         {
-            var isAdmin = IsAdmin();
-            if (!isAdmin)
-            {
-                return RedirectToAction("Error", "Home");
-            }
             var catoriesQuery = data.Categories.AsQueryable();
             var categories = catoriesQuery
-                             .OrderByDescending(x => x.Id)
-                             .Select(x => new CategoriesViewModel
-                             {
-                                 Id = x.Id,
-                                 Name = x.Name,
-                                 ImageURL = x.ImageURL
-                             })
-                             .ToList();
+            .OrderByDescending(x => x.Id)
+            .Select(x => new CategoriesViewModel
+            {
+                Id = x.Id,
+                Name = x.Name,
+                ImageURL = x.ImageURL
+            })
+            .ToList();
             return View(new AllCategoriesQueryModel
             {
                 Categories = categories
@@ -58,11 +53,6 @@
         [Authorize(Roles = GlobalConstants.Administator.AdministratorRoleName)]
         public IActionResult DeleteCategory(int Id)
         {
-            var isAdmin = IsAdmin();
-            if (!isAdmin)
-            {
-                return RedirectToAction("Error", "Home");
-            }
             administratorService.DeleteCategory(Id);
             return RedirectToAction(nameof(EditCategories));
         }
@@ -79,11 +69,6 @@
         [Authorize(Roles = GlobalConstants.Administator.AdministratorRoleName)]
         public IActionResult EditPosts()
         {
-            var isAdmin = IsAdmin();
-            if (!isAdmin)
-            {
-                return RedirectToAction("Error", "Home");
-            }
             var catoriesQuery = data.Categories.AsQueryable();
             var categories = catoriesQuery
                              .OrderByDescending(x => x.Id)
@@ -102,11 +87,6 @@
         [Authorize(Roles = GlobalConstants.Administator.AdministratorRoleName)]
         public IActionResult Category(int Id)
         {
-            var isAdmin = IsAdmin();
-            if (!isAdmin)
-            {
-                return RedirectToAction("Error", "Home");
-            }
             var category = categoryService.GetCategory(Id);
             var postsCategory = categoryService.GetCategoryPosts(category);
             return View(new CategoryQueryModel
@@ -118,22 +98,12 @@
         [Authorize(Roles = GlobalConstants.Administator.AdministratorRoleName)]
         public IActionResult DeletePost(int Id)
         {
-            var isAdmin = IsAdmin();
-            if (!isAdmin)
-            {
-                return RedirectToAction("Error", "Home");
-            }
             administratorService.DeletePost(Id);
             return RedirectToAction(nameof(EditPosts));
         }
         [Authorize(Roles = GlobalConstants.Administator.AdministratorRoleName)]
         public IActionResult EditCategory(int Id)
         {
-            var isAdmin = IsAdmin();
-            if (!isAdmin)
-            {
-                return RedirectToAction("Error", "Home");
-            }
             var categoryToEdit = data.Categories.Find(Id);
             if (categoryToEdit == null)
             {
@@ -149,11 +119,6 @@
         [HttpPost]
         public IActionResult EditCategory(int Id, EditCategoryFormModel toEdit)
         {
-            var isAdmin = IsAdmin();
-            if (!isAdmin)
-            {
-                return RedirectToAction("Error", "Home");
-            }
             var edited = administratorService.EditCategory(Id, toEdit);
             if (!edited)
             {
@@ -164,11 +129,6 @@
         [Authorize(Roles = GlobalConstants.Administator.AdministratorRoleName)]
         public IActionResult Users()
         {
-            var isAdmin = IsAdmin();
-            if (!isAdmin)
-            {
-                return RedirectToAction("Error", "Home");
-            }
             var usersQuery = data.Users.AsQueryable();
             var users = usersQuery
                 .OrderByDescending(x => x.Id)
@@ -191,11 +151,6 @@
         [Authorize(Roles = GlobalConstants.Administator.AdministratorRoleName)]
         public IActionResult DeleteUser(string Id)
         {
-            var isAdmin = IsAdmin();
-            if (!isAdmin)
-            {
-                return RedirectToAction("Error", "Home");
-            }
             var deleted = administratorService.DeleteUser(Id);
             if (!deleted)
             {

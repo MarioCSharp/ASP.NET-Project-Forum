@@ -8,7 +8,7 @@
     using Forum.Models.Comment;
     using System;
     using Forum.Models.Home;
-
+    using Forum.Models.Statistics;
     public class PostService : IPostService
     {
         private readonly ApplicationDbContext data;
@@ -88,5 +88,18 @@
             data.SaveChanges();
             return true;
         }
+        public List<PostsListingViewModel> GetPostsView(List<Post> postsQuery, string userId)
+        => postsQuery
+                .Where(x => x.UserId == userId)
+                .Select(y => new PostsListingViewModel
+                {
+                    Id = y.Id,
+                    Content = y.Content,
+                    CreaterEmail = y.CreaterEmail,
+                    PostedOn = y.PostedOn,
+                    Title = y.Tittle
+                })
+                .OrderByDescending(x => x.Id)
+                .ToList();
     }
 }
