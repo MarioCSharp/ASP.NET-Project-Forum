@@ -21,10 +21,17 @@
         {
             var dataQuery = data.Categories.AsQueryable();
             var list = dataQuery
-                .OrderByDescending(x => x.Id);
+                .OrderByDescending(x => x.Id)
+                .Select(x => new CategoriesViewModel
+                {
+                    Id = x.Id,
+                    Name = x.Name,
+                    ImageURL = x.ImageURL
+                })
+                .ToList();
             return View(new AllCategoriesQueryModel
             {
-                Categories = dataQuery
+                Categories = list
             });
         }
         [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]

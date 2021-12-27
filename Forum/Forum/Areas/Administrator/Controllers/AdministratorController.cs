@@ -43,6 +43,12 @@
             var catoriesQuery = data.Categories.AsQueryable();
             var categories = catoriesQuery
                              .OrderByDescending(x => x.Id)
+                             .Select(x => new CategoriesViewModel
+                             {
+                                 Id = x.Id,
+                                 Name = x.Name,
+                                 ImageURL = x.ImageURL
+                             })
                              .ToList();
             return View(new AllCategoriesQueryModel
             {
@@ -81,6 +87,12 @@
             var catoriesQuery = data.Categories.AsQueryable();
             var categories = catoriesQuery
                              .OrderByDescending(x => x.Id)
+                             .Select(x => new CategoriesViewModel
+                             {
+                                 Id = x.Id,
+                                 Name = x.Name,
+                                 ImageURL = x.ImageURL
+                             })
                              .ToList();
             return View(new AllCategoriesQueryModel
             {
@@ -97,7 +109,7 @@
             }
             var category = categoryService.GetCategory(Id);
             var postsCategory = categoryService.GetCategoryPosts(category);
-            return View(new CategoryViewModel
+            return View(new CategoryQueryModel
             {
                 Name = category.Name,
                 Posts = postsCategory
@@ -160,6 +172,16 @@
             var usersQuery = data.Users.AsQueryable();
             var users = usersQuery
                 .OrderByDescending(x => x.Id)
+                .Select(x => new UsersViewModel
+                {
+                    Id = x.Id,
+                    FullName = x.FullName,
+                    Email = x.Email,
+                    UserName = x.UserName,
+                    NormalizedEmail = x.NormalizedEmail,
+                    NormalizedUserName = x.NormalizedUserName,
+                    PasswordHash = x.PasswordHash
+                })
                 .ToList();
             return View(new AllUsersQuery
             {

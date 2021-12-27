@@ -7,6 +7,8 @@
     using System.Linq;
     using Forum.Models.Comment;
     using System;
+    using Forum.Models.Home;
+
     public class PostService : IPostService
     {
         private readonly ApplicationDbContext data;
@@ -33,11 +35,17 @@
             data.SaveChanges();
             return true;
         }
-        public List<Category> GetCategories()
+        public List<CategoriesViewModel> GetCategories()
         {
             var categoriesQuery = data.Categories.AsQueryable();
             var categories = categoriesQuery
                 .OrderByDescending(c => c.Id)
+                .Select(x => new CategoriesViewModel
+                {
+                    Id = x.Id,
+                    Name = x.Name,
+                    ImageURL = x.ImageURL
+                })
                 .ToList();
             return categories;
         }

@@ -4,6 +4,6 @@
     using Data.Models;
     public class AllCategoriesQueryModel
     {
-        public IEnumerable<Category> Categories { get; set; }
+        public IEnumerable<CategoriesViewModel> Categories { get; set; }
     }
 }

@@ -51,7 +51,17 @@
                 Title = post.Tittle,
                 Content = post.Content,
                 MyUser = data.Users.FirstOrDefault(x => x.Id == post.UserId),
-                Comments = commentQuery.Where(x => x.PostId == post.Id).OrderByDescending(x => x.Id).ToList()
+                Comments = commentQuery
+                .Where(x => x.PostId == post.Id)
+                .OrderByDescending(x => x.Id)
+                .Select(x => new CommentsViewModel
+                {
+                    Id = x.Id,
+                    Content = x.Content,
+                    CreaterEmail = x.CreaterEmail,
+                    PostedOn = x.PostedOn
+                })
+                .ToList()
             });
         }
         [Authorize]

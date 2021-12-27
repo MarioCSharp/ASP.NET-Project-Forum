@@ -2,12 +2,12 @@
 {
     public class UsersViewModel
     {
-        public int Count { get; set; }
-        public string UserName { get; set; }
-        public string NormalizedUserName { get; set; }
-        public string Email { get; set; }
-        public string NormalizedEmail { get; set; }
-        public string PasswordHash { get; set; }
-        public string FullName { get; set; }
+        public string Id { get; init; }
+        public string UserName { get; init; }
+        public string NormalizedUserName { get; init; }
+        public string Email { get; init; }
+        public string NormalizedEmail { get; init; }
+        public string PasswordHash { get; init; }
+        public string FullName { get; init; }
     }
 }

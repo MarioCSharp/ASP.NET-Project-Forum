@@ -6,7 +6,7 @@
     public interface ICategoryService
     {
         Category GetCategory(int Id);
-        List<Post> GetCategoryPosts(Category category);
+        List<PostViewModel> GetCategoryPosts(Category category);
         bool Create(CategoryFormModel categoryInput);
     }
 }

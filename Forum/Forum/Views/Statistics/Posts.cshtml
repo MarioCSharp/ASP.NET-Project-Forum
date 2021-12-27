@@ -1,9 +1,6 @@
-﻿@using Forum.Models.Category
-@model CategoryQueryModel
-
-<h3> @Model.Name</h3>
-<br />
-@foreach (var post in Model.Posts)
+﻿@using Forum.Models.Statistics
+@model AllMyPostsQueryModel
+@foreach(var post in Model.Posts)
 {
     <div class="container-fluid mt-100">
         <div class="row">
@@ -13,10 +10,13 @@
                         <div class="media flex-wrap w-100 align-items-center">
                             <div class="media-body ml-3">
                                 <h5 class="media-heading text-dark"><a asp-controller="Post" asp-action="Details" asp-route-id="@post.Id">@post.Title</a></h5>
-                                <a asp-action="DeletePost" asp-route-id="@post.Id" class="btn btn-danger">Delete</a>
                                 <div class="text-muted small">
                                     <p>@post.PostedOn</p>
                                 </div>
+                                @if(post.CreaterEmail == User.Identity.Name)
+                                {
+                                    <a asp-controller = "Post" asp-action = "Delete" asp-route-id = "@post.Id" class = "btn btn-danger">Delete</a>
+                                }
                             </div>
                         </div>
                     </div>

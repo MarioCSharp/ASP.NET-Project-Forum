@@ -15,7 +15,7 @@
         {
             var category = categoryService.GetCategory(Id);
             var postsCategory = categoryService.GetCategoryPosts(category);
-            return View(new CategoryViewModel
+            return View(new CategoryQueryModel
             {
                 Name = category.Name,
                 Posts = postsCategory

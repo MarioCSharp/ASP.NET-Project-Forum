@@ -14,9 +14,16 @@
         }
         public Category GetCategory(int Id)
         => data.Categories.Find(Id);
-        public List<Post> GetCategoryPosts(Category category)
+        public List<PostViewModel> GetCategoryPosts(Category category)
         => data.Posts
                 .Where(x => x.CategoryId == category.Id)
+                .Select(x => new PostViewModel
+                {
+                    Id = x.Id,
+                    Title = x.Tittle,
+                    CreaterEmail = x.CreaterEmail,
+                    PostedOn = x.PostedOn,
+                })
                 .ToList();
         public bool Create(CategoryFormModel categoryInput)
         {
