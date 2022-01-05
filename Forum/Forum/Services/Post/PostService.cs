@@ -29,7 +29,8 @@
                 PostedOn = DateTime.Now,
                 CreaterEmail = data.Users.FirstOrDefault(x => x.Id == userId).Email,
                 UserId = userId,
-                CategoryId = mdl.CategoryId
+                CategoryId = mdl.CategoryId,
+                Likes = 0
             };
             data.Posts.Add(post);
             data.SaveChanges();

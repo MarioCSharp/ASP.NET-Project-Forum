@@ -6,6 +6,8 @@
 <p>Creator: @Model.MyUser.Email</p>
 
 <a asp-controller="Post" asp-action="Comment" asp-route-id="@Model.Id" class="btn btn-primary">Comment</a>
+<a asp-controller = "Like" asp-action = "Like" asp-route-id = "@Model.Id" class = "btn btn-primary">Like</a>
+<h5>Likes: @Model.Likes</h5>
 <hr />
 <h3>Comments:</h3>
 <br />

@@ -5,6 +5,7 @@ namespace Forum
     using Forum.Infrastructure;
     using Forum.Services.Administrator;
     using Forum.Services.Category;
+    using Forum.Services.Like;
     using Forum.Services.Post;
     using Forum.Services.User;
     using Microsoft.AspNetCore.Builder;
@@ -44,6 +45,7 @@ namespace Forum
             services.AddTransient<IPostService, PostService>();
             services.AddTransient<ICategoryService, CategoryService>();
             services.AddTransient<IAdministratorService, AdministratorService>();
+            services.AddTransient<ILikeService, LikeService>();
         }
         public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
         {

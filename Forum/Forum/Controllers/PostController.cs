@@ -62,7 +62,8 @@
                     CreaterEmail = x.CreaterEmail,
                     PostedOn = x.PostedOn
                 })
-                .ToList()
+                .ToList(),
+                Likes = data.Likes.Where(x => x.PostId == post.Id).Count()
             });
         }
         [Authorize]
